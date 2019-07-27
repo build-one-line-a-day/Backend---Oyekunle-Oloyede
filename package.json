@@ -1,0 +1,28 @@
+{
+  "name": "one-line-a-day",
+  "version": "1.0.0",
+  "description": "The backend of the one line day project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/build-one-line-a-day/Backend---Oyekunle-Oloyede.git"
+  },
+  "keywords": [
+    "journal",
+    "one",
+    "line",
+    "ten",
+    "years",
+    "express",
+    "server"
+  ],
+  "author": "oyekunle-mark",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/build-one-line-a-day/Backend---Oyekunle-Oloyede/issues"
+  },
+  "homepage": "https://github.com/build-one-line-a-day/Backend---Oyekunle-Oloyede#readme"
+}
