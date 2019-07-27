@@ -4,7 +4,8 @@
   "description": "The backend of the one line day project",
   "main": "index.js",
   "scripts": {
-    "server": "nodemon index.js"
+    "server": "nodemon index.js",
+    "test": "jest --verbose --watch"
   },
   "repository": {
     "type": "git",
@@ -37,6 +38,7 @@
     "eslint": "^5.16.0",
     "eslint-config-airbnb-base": "^13.2.0",
     "eslint-plugin-import": "^2.18.2",
+    "jest": "^24.8.0",
     "nodemon": "^1.19.1"
   }
 }
