@@ -4,7 +4,7 @@
   "description": "The backend of the one line day project",
   "main": "index.js",
   "scripts": {
-    "server": "nodemon index.js",
+    "server": "nodemon cluster.js",
     "test": "jest --verbose --watch",
     "coverage": "jest --verbose --coverage"
   },
