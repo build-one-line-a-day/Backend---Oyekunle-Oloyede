@@ -13,8 +13,9 @@ The One Line a Day is hosted on Heroku and can be [here](https://one-line-daily.
 ### API Endpoints
 
 The following endpoints are available for use.
+
 | Methods | Endpoint | Description |
-|:-------:|:-----------------:|:---------------------:|
+|---------|-------------------|-----------------------|
 |GET |/api/auth/users |gets all users |
 |GET |/api/auth/users/:id|gets a user by id |
 |POST |/api/auth/register |registers a new user |
@@ -35,7 +36,7 @@ The following endpoints are available for use.
 
 ### Registration [POST]
 
-**URL**: [https://one-line-daily.herokuapp.com/api/auth/register]
+**URL**: *https://one-line-daily.herokuapp.com/api/auth/register*
 **Payload**:
 
 ```javascript
@@ -59,7 +60,7 @@ The following endpoints are available for use.
 
 ### Login [POST]
 
-**URL**: [https://one-line-daily.herokuapp.com/api/auth/login]
+**URL**: *https://one-line-daily.herokuapp.com/api/auth/login*
 **Payload**:
 
 ```javascript
@@ -86,15 +87,12 @@ The following endpoints are available for use.
 
 ### Get all users [GET]
 
-**URL**: [https://one-line-daily.herokuapp.com/api/auth/users]
+**URL**: *https://one-line-daily.herokuapp.com/api/auth/users*
 
 **Returns**: An array of user object.
 
 ```javascript
 {
-    "status": 200,
-    "data": [
-        {
     "status": 200,
     "data": [
         {
@@ -147,13 +145,11 @@ The following endpoints are available for use.
         }
     ]
 }
-    ]
-}
 ```
 
 ### Get user by id [GET]
 
-**URL**: [https://one-line-daily.herokuapp.com/api/auth/users/1]
+**URL**: *https://one-line-daily.herokuapp.com/api/auth/users/1*
 
 **Returns**: the user object.
 
