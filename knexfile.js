@@ -3,7 +3,7 @@ require('dotenv').config();
 module.exports = {
   development: {
     client: 'pg',
-    connection: process.env.DATABASE_URL,
+    connection: process.env.DB_URL,
     useNullAsDefault: true,
     pool: {
       min: 2,
