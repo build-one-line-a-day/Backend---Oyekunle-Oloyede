@@ -7,7 +7,8 @@
     "start": "node cluster.js",
     "server": "nodemon cluster.js",
     "test": "cross-env DB_ENV=testing jest --verbose --watch",
-    "coverage": "cross-env DB_ENV=testing jest --verbose --coverage"
+    "coverage": "cross-env DB_ENV=testing jest --verbose --coverage",
+    "migrate": "knex migrate:latest"
   },
   "repository": {
     "type": "git",
