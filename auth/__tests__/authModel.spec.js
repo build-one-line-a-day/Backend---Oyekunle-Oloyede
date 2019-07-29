@@ -1,7 +1,7 @@
 const db = require('../../database/dbConfig');
 const Model = require('../authModel');
 
-beforeEach(async () => {
+beforeAll(async () => {
   await db('users').truncate();
 });
 
@@ -26,13 +26,6 @@ describe('successfully creates a user', () => {
 
 describe('gets users', () => {
   it('returns the user by id', async () => {
-    await Model.insert({
-      firstname: 'John',
-      lastname: 'Doe',
-      username: 'jhdoe',
-      email: 'jh@john.com',
-      password: '12345',
-    });
     const user = await Model.get(1);
 
     expect(user).toEqual({
@@ -43,36 +36,14 @@ describe('gets users', () => {
   });
 
   it('returns an array of users', async () => {
-    await Model.insert({
-      firstname: 'John',
-      lastname: 'Doe',
-      username: 'jhdoe',
-      email: 'jh@john.com',
-      password: '12345',
-    });
-    await Model.insert({
-      firstname: 'Jane',
-      lastname: 'Doe',
-      username: 'jndoe',
-      email: 'jn@john.com',
-      password: '12345',
-    });
     const users = await Model.get();
 
-    expect(users).toHaveLength(2);
+    expect(users).toHaveLength(1);
   });
 });
 
 describe('gets user by username', () => {
   it('returns the user by username', async () => {
-    await Model.insert({
-      firstname: 'John',
-      lastname: 'Doe',
-      username: 'jhdoe',
-      email: 'jh@john.com',
-      password: '12345',
-    });
-
     const user = await Model.getByUsername('jhdoe');
 
     expect(user.username).toEqual('jhdoe');
@@ -81,14 +52,6 @@ describe('gets user by username', () => {
 
 describe('gets user by email', () => {
   it('returns the user by email', async () => {
-    await Model.insert({
-      firstname: 'John',
-      lastname: 'Doe',
-      username: 'jhdoe',
-      email: 'jh@john.com',
-      password: '12345',
-    });
-
     const user = await Model.getByEmail('jh@john.com');
 
     expect(user.email).toEqual('jh@john.com');
