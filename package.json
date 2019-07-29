@@ -28,6 +28,7 @@
   },
   "homepage": "https://github.com/build-one-line-a-day/Backend---Oyekunle-Oloyede#readme",
   "dependencies": {
+    "bcrypt": "^3.0.6",
     "compression": "^1.7.4",
     "cors": "^2.8.5",
     "dotenv": "^8.0.0",
