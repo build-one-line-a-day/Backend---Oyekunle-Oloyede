@@ -6,8 +6,4 @@ exports.get = id => {
   return id ? query.where({ id }).first() : query;
 };
 
-exports.insert = async user =>
-  db('users')
-    .insert(user)
-    .returning(['username, password'])
-    .first();
+exports.insert = user => db('users').insert(user);

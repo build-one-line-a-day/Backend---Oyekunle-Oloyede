@@ -1,4 +1,5 @@
 const Model = require('./authModel');
+const bcryptHelper = require('../helpers/bcryptHelper');
 
 const getUsers = async (req, res) => {
   try {
@@ -35,7 +36,33 @@ const getUserById = async (req, res) => {
   } catch (err) {
     res.status(500).json({
       status: 500,
-      message: 'Error getting users.',
+      message: 'Error getting user.',
+    });
+  }
+};
+
+const register = async (req, res) => {
+  const { firstname, lastname, username, email } = req.body;
+
+  try {
+    const password = await bcryptHelper.hash(req.body.password);
+
+    await Model.insert({
+      firstname,
+      lastname,
+      username,
+      email,
+      password,
+    });
+
+    res.status(201).json({
+      status: 201,
+      message: 'User created successfully',
+    });
+  } catch (err) {
+    res.status(500).json({
+      status: 500,
+      message: 'Error registering user.',
     });
   }
 };
@@ -43,4 +70,5 @@ const getUserById = async (req, res) => {
 module.exports = {
   getUsers,
   getUserById,
+  register,
 };
