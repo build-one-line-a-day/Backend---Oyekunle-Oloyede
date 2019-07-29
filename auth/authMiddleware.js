@@ -1,6 +1,6 @@
 const Model = require('./authModel');
 
-const verifyId = async (req, res, next) => {
+const validateId = async (req, res, next) => {
   const { id } = req.params;
 
   if (!/^\d+$/.test(id))
@@ -27,6 +27,19 @@ const verifyId = async (req, res, next) => {
   next();
 };
 
+const validateLogin = (req, res, next) => {
+  const { email, password } = req.body;
+
+  if (!email || !password)
+    return res.status(400).json({
+      status: 400,
+      message: 'Login credential must include username and password.',
+    });
+
+  next();
+};
+
 module.exports = {
-  verifyId,
+  validateId,
+  validateLogin,
 };
