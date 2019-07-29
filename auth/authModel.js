@@ -7,3 +7,5 @@ exports.get = id => {
 };
 
 exports.insert = user => db('users').insert(user);
+
+exports.getByUsername = username => db('users').where({ username }).first();
