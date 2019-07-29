@@ -5,6 +5,7 @@ const compression = require('compression');
 const logger = require('morgan');
 
 const server = express();
+const authRouter = require('../auth');
 
 server.use(express.json());
 server.use(cors());
@@ -18,6 +19,8 @@ server.get('/', (req, res) =>
     message: 'The One Line a Day server is alive and kicking!',
   }),
 );
+
+server.use('/api/auth', authRouter);
 
 server.use((req, res) =>
   res.status(404).json({
