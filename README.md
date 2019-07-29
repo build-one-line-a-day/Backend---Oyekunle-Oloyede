@@ -14,12 +14,12 @@ The One Line a Day is hosted on Heroku and can be [here](https://one-line-daily.
 
 The following endpoints are available for use.
 
-| Methods | Endpoint | Description |
-|---------|-------------------|-----------------------|
-|GET |/api/auth/users |gets all users |
-|GET |/api/auth/users/:id|gets a user by id |
-|POST |/api/auth/register |registers a new user |
-|POST |/api/auth/login |logs a user in |
+| Methods | Endpoint            | Description          |
+| ------- | ------------------- | -------------------- |
+| GET     | /api/auth/users     | gets all users       |
+| GET     | /api/auth/users/:id | gets a user by id    |
+| POST    | /api/auth/register  | registers a new user |
+| POST    | /api/auth/login     | logs a user in       |
 
 #### User Schema
 
@@ -36,7 +36,7 @@ The following endpoints are available for use.
 
 ### Registration [POST]
 
-**URL**: *https://one-line-daily.herokuapp.com/api/auth/register*
+**URL**: _https://one-line-daily.herokuapp.com/api/auth/register_
 **Payload**:
 
 ```javascript
@@ -60,7 +60,7 @@ The following endpoints are available for use.
 
 ### Login [POST]
 
-**URL**: *https://one-line-daily.herokuapp.com/api/auth/login*
+**URL**: _https://one-line-daily.herokuapp.com/api/auth/login_
 **Payload**:
 
 ```javascript
@@ -87,7 +87,7 @@ The following endpoints are available for use.
 
 ### Get all users [GET]
 
-**URL**: *https://one-line-daily.herokuapp.com/api/auth/users*
+**URL**: _https://one-line-daily.herokuapp.com/api/auth/users_
 
 **Returns**: An array of user object.
 
@@ -149,7 +149,7 @@ The following endpoints are available for use.
 
 ### Get user by id [GET]
 
-**URL**: *https://one-line-daily.herokuapp.com/api/auth/users/1*
+**URL**: _https://one-line-daily.herokuapp.com/api/auth/users/1_
 
 **Returns**: the user object.
 
@@ -164,3 +164,7 @@ The following endpoints are available for use.
     }
 }
 ```
+
+## Author
+
+_Oyekunle Oloyede_
