@@ -21,7 +21,7 @@ describe('/ [GET]', () => {
 
   it('catches and handles bad request', () =>
     request(server)
-      .get('/ver-inappropriate-url')
+      .get('/very-inappropriate-url')
       .expect('Content-Type', /json/)
       .expect(404)
       .then(res => {

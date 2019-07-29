@@ -4,9 +4,9 @@
   "description": "The backend of the one line day project",
   "main": "index.js",
   "scripts": {
-    "server": "nodemon index.js",
-    "test": "jest --verbose --watch",
-    "coverage": "jest --verbose --coverage"
+    "server": "nodemon cluster.js",
+    "test": "cross-env DB_ENV=testing jest --verbose --watch",
+    "coverage": "cross-env DB_ENV=testing jest --verbose --coverage"
   },
   "repository": {
     "type": "git",
@@ -33,9 +33,12 @@
     "dotenv": "^8.0.0",
     "express": "^4.17.1",
     "helmet": "^3.20.0",
-    "morgan": "^1.9.1"
+    "knex": "^0.19.1",
+    "morgan": "^1.9.1",
+    "pg": "^7.12.0"
   },
   "devDependencies": {
+    "cross-env": "^5.2.0",
     "eslint": "^5.16.0",
     "eslint-config-airbnb-base": "^13.2.0",
     "eslint-plugin-import": "^2.18.2",
