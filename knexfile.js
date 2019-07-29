@@ -3,11 +3,7 @@ require('dotenv').config();
 module.exports = {
   development: {
     client: 'pg',
-    connection: {
-      host: process.env.DB_HOST,
-      database: process.env.DB_NAME,
-      user: process.env.DB_USER,
-    },
+    connection: process.env.DB_URL,
     useNullAsDefault: true,
     pool: {
       min: 2,
@@ -22,11 +18,7 @@ module.exports = {
   },
   testing: {
     client: 'pg',
-    connection: {
-      host: process.env.DB_HOST,
-      database: process.env.DB_TEST_NAME,
-      user: process.env.DB_USER,
-    },
+    connection: process.env.DB_TEST_URL,
     useNullAsDefault: true,
     pool: {
       min: 2,
