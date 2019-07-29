@@ -4,6 +4,7 @@
   "description": "The backend of the one line day project",
   "main": "index.js",
   "scripts": {
+    "start": "node cluster.js",
     "server": "nodemon cluster.js",
     "test": "cross-env DB_ENV=testing jest --verbose --watch",
     "coverage": "cross-env DB_ENV=testing jest --verbose --coverage"
