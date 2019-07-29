@@ -1,7 +1,7 @@
 const db = require('../database/dbConfig');
 
 exports.get = id => {
-  const query = db('users').select('id', 'firstname', 'lastname');
+  const query = db('users').select('id', 'firstname', 'lastname', 'email');
 
   return id ? query.where({ id }).first() : query;
 };
