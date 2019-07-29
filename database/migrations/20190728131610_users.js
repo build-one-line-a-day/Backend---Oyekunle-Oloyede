@@ -11,7 +11,7 @@ exports.up = knex =>
       .string('email', 50)
       .notNullable()
       .unique();
-    tbl.string('password', 30).notNullable();
+    tbl.string('password', 250).notNullable();
   });
 
 exports.down = knex => knex.schema.dropTableIfExists('users');
