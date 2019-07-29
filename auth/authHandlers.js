@@ -69,15 +69,15 @@ const register = async (req, res) => {
 };
 
 const login = async (req, res) => {
-  const { username, password } = req.body;
+  const { email, password } = req.body;
 
   try {
-    const user = await Model.getByUsername(username);
+    const user = await Model.getByEmail(email);
 
     if (!user)
       return res.status(400).json({
         status: 400,
-        message: 'Incorrect username',
+        message: 'Incorrect email',
       });
 
     const match = await bcryptHelper.compare(password, user.password);
