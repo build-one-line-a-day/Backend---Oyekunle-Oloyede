@@ -9,7 +9,9 @@ exports.up = knex =>
       .notNullable()
       .unsigned()
       .references('id')
-      .inTable('users');
+      .inTable('users')
+      .onUpdate('CASCADE')
+      .onDelete('CASCADE');
   });
 
 exports.down = knex => knex.schema.dropTableIfExists('entries');
