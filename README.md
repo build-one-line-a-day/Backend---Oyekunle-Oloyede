@@ -180,6 +180,151 @@ The following endpoints are available for use.
 }
 ```
 
+### Protected Endpoints
+
+### Get all entries [GET]
+
+**URL**: _https://one-line-daily.herokuapp.com/api/entries_
+
+**Returns**: Returns an array of entries.
+
+```javascript
+{
+    "status": 200,
+    "data": [
+        {
+            "id": 1,
+            "title": "first entry",
+            "text": "this is quite awesome right.",
+            "created_at": "2019-07-30T13:34:38.772Z",
+            "user_id": 1
+        },
+        {
+            "id": 2,
+            "title": "second entry",
+            "text": "keep hacking and never look back.",
+            "created_at": "2019-07-30T13:34:38.772Z",
+            "user_id": 2
+        },
+        {
+            "id": 3,
+            "title": "third entry",
+            "text": "go, and may the codes be with you.",
+            "created_at": "2019-07-30T13:34:38.772Z",
+            "user_id": 3
+        },
+        {
+            "id": 4,
+            "title": "fourth entry",
+            "text": "fourth time lucky?",
+            "created_at": "2019-07-30T13:34:38.772Z",
+            "user_id": 4
+        },
+        {
+            "id": 5,
+            "title": "fifth entry",
+            "text": "the dark forces will never prevail while the server is up.",
+            "created_at": "2019-07-30T13:34:38.772Z",
+            "user_id": 5
+        }
+    ]
+}
+```
+
+### Get entry by id [GET]
+
+**URL**: _https://one-line-daily.herokuapp.com/api/entries/1_
+
+**Returns**: Returns an entry object.
+
+```javascript
+{
+    "status": 200,
+    "data": {
+        "id": 1,
+        "title": "third entry",
+        "text": "go, and may the codes be with you.",
+        "created_at": "2019-07-30T13:34:38.772Z",
+        "user_id": 3
+    }
+}
+```
+
+### Create an entry [POST]
+
+**URL**: _https://one-line-daily.herokuapp.com/api/entries_
+
+**Payload**: The entry object to be created.
+
+```javascript
+{
+    "title": "random entry",
+    "text": "go, and may the codes be with you.",
+    "user_id": 1
+}
+```
+
+**Returns**: The newly created entry.
+
+```javascript
+{
+    "status": 201,
+    "data": [
+        {
+            "id": 6,
+            "title": "random entry",
+            "text": "go, and may the codes be with you.",
+            "user_id": 1,
+            "created_at": "2019-07-30T14:14:04.095Z"
+        }
+    ]
+}
+```
+
+### Updata an entry [PUT]
+
+**URL**: _https://one-line-daily.herokuapp.com/api/entries/6_
+
+**Payload**: The entry object to be updated.
+
+```javascript
+{
+    "title": "sixth entry",
+    "text": "go, and may the codes be with you.",
+    "user_id": 1
+}
+```
+
+**Returns**: The updated entry.
+
+```javascript
+{
+    "status": 200,
+    "data": [
+        {
+            "id": 6,
+            "title": "sixth entry",
+            "text": "go, and may the codes be with you.",
+            "user_id": 1,
+            "created_at": "2019-07-30T14:14:04.095Z"
+        }
+    ]
+}
+```
+
+### Delete entry [DELETE]
+
+**URL**: _https://one-line-daily.herokuapp.com/api/entries/6_
+
+**Returns**: A JSON object with a message
+
+```javascript
+{
+    "status": 200,
+    "data": "1 entry deleted."
+}
+```
+
 ## Author
 
 _Oyekunle Oloyede_
