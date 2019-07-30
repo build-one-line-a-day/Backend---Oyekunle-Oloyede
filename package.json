@@ -8,9 +8,10 @@
     "server": "nodemon cluster.js",
     "test": "cross-env DB_ENV=testing jest --verbose --watch",
     "coverage": "cross-env DB_ENV=testing jest --verbose --coverage",
-    "migrate": "knex migrate:latest",
+    "migrate": "knex migrate:latest --all",
     "seed": "knex seed:run",
-    "prod": "npm-run-all migrate seed"
+    "rollback": "knex migrate:rollback",
+    "prod": "npm-run-all rollback migrate seed"
   },
   "repository": {
     "type": "git",
