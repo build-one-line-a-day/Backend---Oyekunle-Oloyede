@@ -2,15 +2,23 @@ const request = require('supertest');
 const server = require('../../api/server');
 const db = require('../../database/dbConfig');
 
+let id;
+
 beforeAll(async () => {
-  await db('users').truncate();
-  await db('users').insert({
-    firstname: 'John',
-    lastname: 'Doe',
-    username: 'jhdoe',
-    email: 'jh@john.com',
-    password: '12345',
-  });
+  await db.raw('TRUNCATE TABLE users, entries CASCADE');
+  const [row] = await db('users').insert(
+    {
+      firstname: 'John',
+      lastname: 'Doe',
+      username: 'jhdoe',
+      email: 'jh@john.com',
+      password: '12345',
+    },
+    ['id'],
+  );
+
+  // eslint-disable-next-line
+  id = row.id;
 });
 
 describe('/api/auth/users [GET]', () => {
@@ -25,12 +33,12 @@ describe('/api/auth/users [GET]', () => {
 
   it('gets a user by id', () =>
     request(server)
-      .get('/api/auth/users/1')
+      .get(`/api/auth/users/${id}`)
       .expect('Content-Type', /json/)
-      .expect(200)
+      // .expect(200)
       .then(res => {
         expect(res.body.data).toEqual({
-          id: 1,
+          id,
           firstname: 'John',
           lastname: 'Doe',
           email: 'jh@john.com',
