@@ -60,7 +60,20 @@ describe('/api/auth/register [POST]', () => {
       .expect('Content-Type', /json/)
       .expect(201));
 
-  it('returns 400 for bad request', () =>
+  it('returns 400 for existing user.', () =>
+    request(server)
+      .post('/api/auth/register')
+      .send({
+        firstname: 'Jane',
+        lastname: 'Doe',
+        username: 'janeDoe',
+        email: 'jane@doe.com',
+        password: '12345',
+      })
+      .expect('Content-Type', /json/)
+      .expect(400));
+
+  it('returns 400 for empty req body.', () =>
     request(server)
       .post('/api/auth/register')
       .send({})
@@ -92,12 +105,29 @@ describe('/api/auth/login [POST]', () => {
         expect(res.body.user.email).toEqual('jane@doe.com');
       }));
 
+  it('catches bad email', () =>
+    request(server)
+      .post('/api/auth/login')
+      .send({
+        email: 'horibble',
+        password: 'very bad',
+      })
+      .expect(400));
+
+  it('catches bad password', () =>
+    request(server)
+      .post('/api/auth/login')
+      .send({
+        email: 'jane@doe.com',
+        password: 'very bad',
+      })
+      .expect(400));
+
   it('returns a 400 for bad request', () =>
     request(server)
       .post('/api/auth/login')
       .send({
         email: 'bad@bad.com',
-        password: 'very bad',
       })
       .expect(400));
 });
