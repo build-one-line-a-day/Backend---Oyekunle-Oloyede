@@ -22,6 +22,25 @@ const getEntries = async (req, res) => {
   }
 };
 
+const getEntryById = async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const entry = await Model.get(id);
+
+    res.status(200).json({
+      status: 200,
+      data: entry,
+    });
+  } catch (err) {
+    res.status(500).json({
+      status: 500,
+      error: 'Cannot get entry',
+    });
+  }
+};
+
 module.exports = {
   getEntries,
+  getEntryById,
 };
