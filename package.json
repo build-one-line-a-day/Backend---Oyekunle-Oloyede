@@ -10,7 +10,8 @@
     "coverage": "cross-env DB_ENV=testing jest --verbose --coverage",
     "migrate": "knex migrate:latest",
     "seed": "knex seed:run",
-    "prod": "npm-run-all migrate seed"
+    "rollback": "knex migrate:rollback --all",
+    "prod": "npm-run-all rollback migrate seed"
   },
   "repository": {
     "type": "git",

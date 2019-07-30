@@ -4,8 +4,8 @@ const validateId = async (req, res, next) => {
   const { id } = req.params;
 
   if (!/^\d+$/.test(id))
-    return res.status(404).json({
-      status: 404,
+    return res.status(400).json({
+      status: 400,
       message: 'Request parameter must be an integer.',
     });
 

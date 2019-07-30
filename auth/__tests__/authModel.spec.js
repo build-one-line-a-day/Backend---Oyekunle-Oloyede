@@ -20,6 +20,7 @@ describe('successfully creates a user', () => {
       id: 1,
       firstname: 'John',
       lastname: 'Doe',
+      email: 'jh@john.com',
     });
   });
 });
@@ -32,6 +33,7 @@ describe('gets users', () => {
       id: 1,
       firstname: 'John',
       lastname: 'Doe',
+      email: 'jh@john.com',
     });
   });
 
