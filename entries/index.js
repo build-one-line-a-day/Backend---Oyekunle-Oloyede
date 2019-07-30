@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const handler = require('./entryHandlers');
 const middleware = require('./entryMIddleware');
+const validateUserId = require('../auth/authMiddleware').validateId;
 
 router.get('/', middleware.protectPage, handler.getEntries);
 router.get(
@@ -8,6 +9,12 @@ router.get(
   middleware.protectPage,
   middleware.validateId,
   handler.getEntryById,
+);
+router.get(
+  '/user/:id',
+  middleware.protectPage,
+  validateUserId,
+  handler.getEntryByUserId,
 );
 router.post(
   '/',
