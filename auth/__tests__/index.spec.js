@@ -4,28 +4,13 @@ const db = require('../../database/dbConfig');
 
 beforeAll(async () => {
   await db('users').truncate();
-});
-
-describe('/api/auth/register [POST]', () => {
-  it('returns 201 on creation.', () =>
-    request(server)
-      .post('/api/auth/register')
-      .send({
-        firstname: 'John',
-        lastname: 'Doe',
-        username: 'jhdoe',
-        email: 'jh@john.com',
-        password: '12345',
-      })
-      .expect('Content-Type', /json/)
-      .expect(201));
-
-  it('returns 400 for bad request', () =>
-    request(server)
-      .post('/api/auth/register')
-      .send({})
-      .expect('Content-Type', /json/)
-      .expect(400));
+  await db('users').insert({
+    firstname: 'John',
+    lastname: 'Doe',
+    username: 'jhdoe',
+    email: 'jh@john.com',
+    password: '12345',
+  });
 });
 
 describe('/api/auth/users [GET]', () => {
@@ -48,8 +33,31 @@ describe('/api/auth/users [GET]', () => {
           id: 1,
           firstname: 'John',
           lastname: 'Doe',
+          email: 'jh@john.com',
         });
       }));
+});
+
+describe('/api/auth/register [POST]', () => {
+  it('returns 201 on creation.', () =>
+    request(server)
+      .post('/api/auth/register')
+      .send({
+        firstname: 'Jane',
+        lastname: 'Doe',
+        username: 'janeDoe',
+        email: 'jane@doe.com',
+        password: '12345',
+      })
+      .expect('Content-Type', /json/)
+      .expect(201));
+
+  it('returns 400 for bad request', () =>
+    request(server)
+      .post('/api/auth/register')
+      .send({})
+      .expect('Content-Type', /json/)
+      .expect(400));
 });
 
 describe('/api/auth/login [POST]', () => {
@@ -57,23 +65,23 @@ describe('/api/auth/login [POST]', () => {
     request(server)
       .post('/api/auth/login')
       .send({
-        email: 'jh@john.com',
+        email: 'jane@doe.com',
         password: '12345',
       })
       .expect('Content-Type', /json/)
       .expect(200));
 
-  it('returns a message on log in.', () =>
+  it('returns a user object on log in.', () =>
     request(server)
       .post('/api/auth/login')
       .send({
-        email: 'jh@john.com',
+        email: 'jane@doe.com',
         password: '12345',
       })
       .expect('Content-Type', /json/)
       .expect(200)
       .then(res => {
-        expect(res.body.message).toEqual('Login successful.');
+        expect(res.body.user.email).toEqual('jane@doe.com');
       }));
 
   it('returns a 400 for bad request', () =>
