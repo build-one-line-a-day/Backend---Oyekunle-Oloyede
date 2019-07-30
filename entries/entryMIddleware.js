@@ -1,5 +1,6 @@
 const Model = require('./entryModel');
 const { get } = require('../auth/authModel');
+const { verify } = require('../helpers/jwtHelper');
 
 exports.validateId = async (req, res, next) => {
   const { id } = req.params;
@@ -66,4 +67,25 @@ exports.validateEntry = async (req, res, next) => {
     });
 
   next();
+};
+
+exports.protectPage = (req, res, next) => {
+  const token = req.get('Authorization');
+
+  if (!token)
+    return res.status(401).json({
+      status: 401,
+      message: 'No token provided, must be set on the Authorization Header',
+    });
+
+  try {
+    const isAuthorized = verify(token);
+
+    if (isAuthorized) next();
+  } catch (err) {
+    res.status(401).json({
+      status: 401,
+      message: 'Invalid user token.',
+    });
+  }
 };
