@@ -53,7 +53,26 @@ const createEntry = async (req, res) => {
   } catch (err) {
     res.status(500).json({
       status: 500,
-      error: 'Cannot get create entry.',
+      error: 'Cannot create entry.',
+    });
+  }
+};
+
+const updateEntry = async (req, res) => {
+  const { id } = req.params;
+  const { title, text, user_id } = req.body;
+
+  try {
+    const entry = await Model.update(id, { title, text, user_id });
+
+    res.status(200).json({
+      status: 200,
+      data: entry,
+    });
+  } catch (err) {
+    res.status(500).json({
+      status: 500,
+      error: 'Cannot update this entry.',
     });
   }
 };
@@ -62,4 +81,5 @@ module.exports = {
   getEntries,
   getEntryById,
   createEntry,
+  updateEntry,
 };

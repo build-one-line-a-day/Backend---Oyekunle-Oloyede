@@ -9,7 +9,13 @@ const get = id => {
 const insert = user =>
   db('entries').insert(user, ['id', 'title', 'text', 'user_id', 'created_at']);
 
+const update = (id, user) =>
+  db('entries')
+    .where({ id })
+    .update(user, ['id', 'title', 'text', 'user_id', 'created_at']);
+
 module.exports = {
   get,
   insert,
+  update,
 };
