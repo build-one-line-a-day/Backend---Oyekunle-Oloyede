@@ -6,6 +6,11 @@ const get = id => {
   return id ? queries.where({ id }).first() : queries;
 };
 
+const getByUserId = user_id =>
+  db('entries')
+    .where({ user_id })
+    .select('id', 'title', 'text', 'created_at');
+
 const insert = user =>
   db('entries').insert(user, ['id', 'title', 'text', 'user_id', 'created_at']);
 
@@ -24,4 +29,5 @@ module.exports = {
   insert,
   update,
   remove,
+  getByUserId,
 };
