@@ -14,8 +14,14 @@ const update = (id, user) =>
     .where({ id })
     .update(user, ['id', 'title', 'text', 'user_id', 'created_at']);
 
+const remove = id =>
+  db('entries')
+    .where({ id })
+    .del();
+
 module.exports = {
   get,
   insert,
   update,
+  remove,
 };

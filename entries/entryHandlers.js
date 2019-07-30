@@ -77,9 +77,28 @@ const updateEntry = async (req, res) => {
   }
 };
 
+const removeEntry = async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const entry = await Model.remove(id);
+
+    res.status(200).json({
+      status: 200,
+      data: `${entry} entry deleted.`,
+    });
+  } catch (err) {
+    res.status(500).json({
+      status: 500,
+      error: 'Cannot delete this entry.',
+    });
+  }
+};
+
 module.exports = {
   getEntries,
   getEntryById,
   createEntry,
   updateEntry,
+  removeEntry,
 };
