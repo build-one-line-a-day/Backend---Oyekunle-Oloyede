@@ -14,17 +14,18 @@ The One Line a Day is hosted on Heroku and can be [here](https://one-line-daily.
 
 The following endpoints are available for use.
 
-| Methods | Endpoint            | Description          |
-| ------- | ------------------- | -------------------- |
-| GET     | /api/auth/users     | gets all users       |
-| GET     | /api/auth/users/:id | gets a user by id    |
-| POST    | /api/auth/register  | registers a new user |
-| POST    | /api/auth/login     | logs a user in       |
-| GET     | /api/entries        | gets all entries     |
-| GET     | /api/entries/:id    | gets a user by id    |
-| POST    | /api/entries        | creates an entry     |
-| PUT     | /api/entries/:id    | updates an entry     |
-| DELETE  | /api/entries/:id    | deletes an entry     |
+| Methods | Endpoint              | Description                          |
+| ------- | --------------------- | ------------------------------------ |
+| GET     | /api/auth/users       | gets all users                       |
+| GET     | /api/auth/users/:id   | gets a user by id                    |
+| POST    | /api/auth/register    | registers a new user                 |
+| POST    | /api/auth/login       | logs a user in                       |
+| GET     | /api/entries          | gets all entries                     |
+| GET     | /api/entries/:id      | gets a user by id                    |
+| GET     | /api/entries/user/:id | returns the ticket created by a user |
+| POST    | /api/entries          | creates an entry                     |
+| PUT     | /api/entries/:id      | updates an entry                     |
+| DELETE  | /api/entries/:id      | deletes an entry                     |
 
 #### User Schema
 
@@ -247,6 +248,32 @@ The following endpoints are available for use.
         "created_at": "2019-07-30T13:34:38.772Z",
         "user_id": 3
     }
+}
+```
+
+### Get a user's entry [GET]
+
+**URL**: _https://one-line-daily.herokuapp.com/api/entries/user/1_
+
+**Returns**: An array of user's entry
+
+```javascript
+{
+    "status": 200,
+    "data": [
+        {
+            "id": 4,
+            "title": "fourth entry",
+            "text": "fourth time lucky?",
+            "created_at": "2019-07-30T10:46:09.135Z"
+        },
+        {
+            "id": 10,
+            "title": "seventh entry",
+            "text": "lets go",
+            "created_at": "2019-07-30T11:35:13.775Z"
+        }
+    ]
 }
 ```
 
