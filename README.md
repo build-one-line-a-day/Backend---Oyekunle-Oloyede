@@ -1,3 +1,8 @@
+![npm](https://img.shields.io/npm/v/npm.svg)
+![License MIT](https://img.shields.io/github/license/mashape/apistatus.svg)
+![Top Language](https://img.shields.io/github/languages/top/badges/shields.svg)
+![Build](https://img.shields.io/badge/build-passing-green)
+
 # Backend---Oyekunle-Oloyede
 
 The One Line a Day project backend.
@@ -21,7 +26,7 @@ The following endpoints are available for use.
 | POST    | /api/auth/register    | registers a new user                 |
 | POST    | /api/auth/login       | logs a user in                       |
 | GET     | /api/entries          | gets all entries                     |
-| GET     | /api/entries/:id      | gets a user by id                    |
+| GET     | /api/entries/:id      | gets an entry by id                  |
 | GET     | /api/entries/user/:id | returns the ticket created by a user |
 | POST    | /api/entries          | creates an entry                     |
 | PUT     | /api/entries/:id      | updates an entry                     |
@@ -357,7 +362,7 @@ The following endpoints are available for use.
 The server uses the Jest testing framework to run tests.
 
 Check tests with the `npm test` command.
-Test coverage is also available with the `npm run coverage` command.
+Coverage is also integrated and the can be viewed with the `npm test` command.
 
 ## Author
 
