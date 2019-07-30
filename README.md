@@ -20,6 +20,11 @@ The following endpoints are available for use.
 | GET     | /api/auth/users/:id | gets a user by id    |
 | POST    | /api/auth/register  | registers a new user |
 | POST    | /api/auth/login     | logs a user in       |
+| GET     | /api/entries        | gets all entries     |
+| GET     | /api/entries/:id    | gets a user by id    |
+| POST    | /api/entries        | creates an entry     |
+| PUT     | /api/entries/:id    | updates an entry     |
+| DELETE  | /api/entries/:id    | deletes an entry     |
 
 #### User Schema
 
