@@ -1,16 +1,24 @@
 const request = require('supertest');
-const server = require('../../api/server');
-const db = require('../../database/dbConfig');
+const server = require('../api/server');
+const db = require('../database/dbConfig');
+
+let id;
 
 beforeAll(async () => {
-  await db('users').truncate();
-  await db('users').insert({
-    firstname: 'John',
-    lastname: 'Doe',
-    username: 'jhdoe',
-    email: 'jh@john.com',
-    password: '12345',
-  });
+  await db.raw('TRUNCATE TABLE users, entries CASCADE');
+  const [row] = await db('users').insert(
+    {
+      firstname: 'John',
+      lastname: 'Doe',
+      username: 'jhdoe',
+      email: 'jh@john.com',
+      password: '12345',
+    },
+    ['id'],
+  );
+
+  // eslint-disable-next-line
+  id = row.id;
 });
 
 describe('/api/auth/users [GET]', () => {
@@ -25,12 +33,12 @@ describe('/api/auth/users [GET]', () => {
 
   it('gets a user by id', () =>
     request(server)
-      .get('/api/auth/users/1')
+      .get(`/api/auth/users/${id}`)
       .expect('Content-Type', /json/)
-      .expect(200)
+      // .expect(200)
       .then(res => {
         expect(res.body.data).toEqual({
-          id: 1,
+          id,
           firstname: 'John',
           lastname: 'Doe',
           email: 'jh@john.com',
@@ -52,7 +60,20 @@ describe('/api/auth/register [POST]', () => {
       .expect('Content-Type', /json/)
       .expect(201));
 
-  it('returns 400 for bad request', () =>
+  it('returns 400 for existing user.', () =>
+    request(server)
+      .post('/api/auth/register')
+      .send({
+        firstname: 'Jane',
+        lastname: 'Doe',
+        username: 'janeDoe',
+        email: 'jane@doe.com',
+        password: '12345',
+      })
+      .expect('Content-Type', /json/)
+      .expect(400));
+
+  it('returns 400 for empty req body.', () =>
     request(server)
       .post('/api/auth/register')
       .send({})
@@ -84,12 +105,29 @@ describe('/api/auth/login [POST]', () => {
         expect(res.body.user.email).toEqual('jane@doe.com');
       }));
 
+  it('catches bad email', () =>
+    request(server)
+      .post('/api/auth/login')
+      .send({
+        email: 'horibble',
+        password: 'very bad',
+      })
+      .expect(400));
+
+  it('catches bad password', () =>
+    request(server)
+      .post('/api/auth/login')
+      .send({
+        email: 'jane@doe.com',
+        password: 'very bad',
+      })
+      .expect(400));
+
   it('returns a 400 for bad request', () =>
     request(server)
       .post('/api/auth/login')
       .send({
         email: 'bad@bad.com',
-        password: 'very bad',
       })
       .expect(400));
 });
