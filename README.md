@@ -325,6 +325,13 @@ The following endpoints are available for use.
 }
 ```
 
+## TESTING
+
+The server uses the Jest testing framework to run tests.
+
+Check tests with the `npm test` command.
+Test coverage is also available with the `npm run coverage` command.
+
 ## Author
 
-_Oyekunle Oloyede_
+**Oyekunle Oloyede**
