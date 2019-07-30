@@ -1,4 +1,5 @@
 const Model = require('./entryModel');
+const { get } = require('../auth/authModel');
 
 exports.validateId = async (req, res, next) => {
   const { id } = req.params;
@@ -23,6 +24,46 @@ exports.validateId = async (req, res, next) => {
       message: 'Error getting entry.',
     });
   }
+
+  next();
+};
+
+exports.validateEntry = async (req, res, next) => {
+  const { title, text, user_id } = req.body;
+
+  const errorMessage = {};
+  let error = false;
+
+  if (!title || title.length < 3) {
+    errorMessage.title =
+      'Title field of length 3 characters or more must be provided.';
+    error = true;
+  }
+
+  if (!text || text.length < 3) {
+    errorMessage.text =
+      'Text field of length 3 characters or more must be provided.';
+    error = true;
+  }
+
+  if (!user_id) {
+    errorMessage.user_id =
+      'user_id field of type integer more must be provided.';
+    error = true;
+  }
+
+  const user = await get(user_id || -1);
+
+  if (!user) {
+    errorMessage.userIdCredential = 'No user matches the user_id provided';
+    error = true;
+  }
+
+  if (error)
+    return res.status(400).json({
+      status: 400,
+      details: errorMessage,
+    });
 
   next();
 };
