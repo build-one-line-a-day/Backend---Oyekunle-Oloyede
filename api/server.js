@@ -6,6 +6,7 @@ const logger = require('morgan');
 
 const server = express();
 const authRouter = require('../auth');
+const entryRouter = require('../entries');
 
 server.use(express.json());
 server.use(cors());
@@ -21,6 +22,7 @@ server.get('/', (req, res) =>
 );
 
 server.use('/api/auth', authRouter);
+server.use('/api/entries', entryRouter);
 
 server.use((req, res) =>
   res.status(404).json({
