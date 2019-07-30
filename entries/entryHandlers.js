@@ -40,7 +40,26 @@ const getEntryById = async (req, res) => {
   }
 };
 
+const createEntry = async (req, res) => {
+  const { title, text, user_id } = req.body;
+
+  try {
+    const entry = await Model.insert({ title, text, user_id });
+
+    res.status(201).json({
+      status: 201,
+      data: entry,
+    });
+  } catch (err) {
+    res.status(500).json({
+      status: 500,
+      error: 'Cannot get create entry.',
+    });
+  }
+};
+
 module.exports = {
   getEntries,
   getEntryById,
+  createEntry,
 };
