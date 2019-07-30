@@ -6,8 +6,7 @@
   "scripts": {
     "start": "node cluster.js",
     "server": "nodemon cluster.js",
-    "test": "cross-env DB_ENV=testing jest --verbose --watch",
-    "coverage": "cross-env DB_ENV=testing jest --verbose --coverage",
+    "test": "cross-env DB_ENV=testing jest --verbose --coverage --runInBand --forceExit",
     "migrate": "knex migrate:latest",
     "seed": "knex seed:run",
     "rollback": "knex migrate:rollback --all",
