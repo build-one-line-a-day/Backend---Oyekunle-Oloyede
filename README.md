@@ -365,6 +365,7 @@ The server uses the Jest testing framework to run tests.
 
 Check tests with the `npm test` command.
 Coverage is also integrated and the can be viewed with the `npm test` command.
+Run the test in watch mode with `npm run watch`.
 
 ## Author
 
