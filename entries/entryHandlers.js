@@ -1,3 +1,4 @@
+const cloudinary = require('cloudinary');
 const Model = require('./entryModel');
 const ImageModel = require('./imageModel');
 
@@ -28,7 +29,6 @@ const getEntryById = async (req, res) => {
 
   try {
     const entry = await Model.get(id);
-
     const image = await ImageModel.getById(id);
 
     // eslint-disable-next-line
@@ -105,7 +105,6 @@ const updateEntry = async (req, res) => {
 
   try {
     const entry = await Model.update(id, { title, text, user_id });
-
     const image = await ImageModel.getById(id);
 
     // eslint-disable-next-line
@@ -127,6 +126,9 @@ const removeEntry = async (req, res) => {
   const { id } = req.params;
 
   try {
+    const { public_id } = await ImageModel.getPublicId(id);
+    await cloudinary.uploader.destroy(public_id);
+
     const entry = await Model.remove(id);
 
     res.status(200).json({
