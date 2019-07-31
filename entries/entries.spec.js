@@ -4,10 +4,11 @@ const db = require('../database/dbConfig');
 
 let token;
 let id;
+let entryId;
 
 beforeAll(async () => {
   await db.raw('TRUNCATE TABLE users, entries CASCADE');
-  await db('entries').truncate();
+  await db.raw('TRUNCATE TABLE entries, images CASCADE');
 
   await request(server)
     .post('/api/auth/register')
@@ -31,11 +32,17 @@ beforeAll(async () => {
   // eslint-disable-next-line
   token = user.body.token;
 
-  await db('entries').insert({
-    title: 'random entry',
-    text: 'go, and may the codes be with you.',
-    user_id: id,
-  });
+  const entry = await db('entries').insert(
+    {
+      title: 'random entry',
+      text: 'go, and may the codes be with you.',
+      user_id: id,
+    },
+    ['id'],
+  );
+
+  console.log('***************************', entry);
+  entryId = entry[0].id;
 });
 
 describe('/api/entries [GET]', () => {
@@ -58,7 +65,7 @@ describe('/api/entries [GET]', () => {
 
   it('gets an entry by id', () =>
     request(server)
-      .get('/api/entries/1')
+      .get(`/api/entries/${entryId}`)
       .set('Authorization', token)
       .expect(200)
       .expect('Content-Type', /json/)
@@ -126,7 +133,7 @@ describe('/api/entries [POST]', () => {
 describe('/api/entries/:id [PUT]', () => {
   it('updates an entry', () =>
     request(server)
-      .put('/api/entries/1')
+      .put(`/api/entries/${entryId}`)
       .send({
         title: 'random entry',
         text: 'go, and may the codes be with you.',
@@ -154,14 +161,14 @@ describe('/api/entries/:id [PUT]', () => {
 describe('/api/entries/:id [DELETE]', () => {
   it('deletes an entry', () =>
     request(server)
-      .delete('/api/entries/2')
+      .delete(`/api/entries/${entryId + 1}`)
       .set('Authorization', token)
       .expect('Content-Type', /json/)
       .expect(200));
 
   it('deletes an entry', () =>
     request(server)
-      .delete('/api/entries/1')
+      .delete(`/api/entries/${entryId}`)
       .set('Authorization', token)
       .expect('Content-Type', /json/)
       .expect(200)
