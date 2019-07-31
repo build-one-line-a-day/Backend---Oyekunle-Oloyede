@@ -14,4 +14,4 @@ exports.up = knex =>
       .onDelete('CASCADE');
   });
 
-exports.down = knex => knex.schema.dropTableIfExists('entries');
+exports.down = knex => knex.schema.raw('DROP TABLE if exists entries cascade');
