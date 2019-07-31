@@ -1,7 +1,7 @@
 exports.up = knex =>
   knex.schema.createTable('images', tbl => {
     tbl.increments();
-    tbl.string('image_url').notNullable();
+    tbl.string('url').notNullable();
     tbl.string('public_id').notNullable();
     tbl
       .integer('entry_id')
