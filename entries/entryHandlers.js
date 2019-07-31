@@ -126,8 +126,9 @@ const removeEntry = async (req, res) => {
   const { id } = req.params;
 
   try {
-    const { public_id } = await ImageModel.getPublicId(id);
-    await cloudinary.uploader.destroy(public_id);
+    const [public_id] = await ImageModel.getPublicId(id);
+
+    if (public_id) await cloudinary.uploader.destroy(public_id.public_id);
 
     const entry = await Model.remove(id);
 

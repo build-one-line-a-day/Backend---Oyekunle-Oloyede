@@ -11,8 +11,7 @@ const getById = entry_id =>
 const getPublicId = entry_id =>
   db('images')
     .where({ entry_id })
-    .select('public_id')
-    .first();
+    .select('public_id');
 
 module.exports = {
   insertImage,
