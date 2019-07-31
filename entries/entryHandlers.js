@@ -1,4 +1,5 @@
 const Model = require('./entryModel');
+const ImageModel = require('./imageModel');
 
 const getEntries = async (req, res) => {
   try {
@@ -69,6 +70,17 @@ const createEntry = async (req, res) => {
 
   try {
     const entry = await Model.insert({ title, text, user_id });
+
+    let image = null;
+
+    if (req.file) {
+      const { url, public_id } = req.file;
+      const entry_id = entry[0].id;
+
+      [image] = await ImageModel.insertImage({ url, public_id, entry_id });
+    }
+
+    entry[0].image = image;
 
     res.status(201).json({
       status: 201,
