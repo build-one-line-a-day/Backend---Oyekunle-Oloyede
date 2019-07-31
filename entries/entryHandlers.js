@@ -29,6 +29,11 @@ const getEntryById = async (req, res) => {
   try {
     const entry = await Model.get(id);
 
+    const image = await ImageModel.getById(id);
+
+    // eslint-disable-next-line
+    image ? (entry.image = image) : (entry.image = null);
+
     res.status(200).json({
       status: 200,
       data: entry,
