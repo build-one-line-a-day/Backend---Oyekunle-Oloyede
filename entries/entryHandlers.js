@@ -106,6 +106,11 @@ const updateEntry = async (req, res) => {
   try {
     const entry = await Model.update(id, { title, text, user_id });
 
+    const image = await ImageModel.getById(id);
+
+    // eslint-disable-next-line
+    image ? (entry[0].image = image) : (entry[0].image = null);
+
     res.status(200).json({
       status: 200,
       data: entry,
