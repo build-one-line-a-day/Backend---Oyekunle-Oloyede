@@ -11,7 +11,7 @@ One Line a Day platform provides an insightful snapshot of your thoughts, memori
 
 Users can log in and start making entries in their 10 year journal. They can create, review, update, and delete data. The app functions as a journal and you can see all entries each day across 10 years at the same time.
 
-## API DOCUMENTATION
+## API Documentation
 
 The One Line a Day is hosted on Heroku and can be [here](https://one-line-daily.herokuapp.com/)
 
@@ -58,6 +58,7 @@ The following endpoints are available for use.
 #### Registration [POST]
 
 **URL**: _https://one-line-daily.herokuapp.com/api/auth/register_
+
 **Payload**:
 
 ```javascript
@@ -82,6 +83,7 @@ The following endpoints are available for use.
 #### Login [POST]
 
 **URL**: _https://one-line-daily.herokuapp.com/api/auth/login_
+
 **Payload**:
 
 ```javascript
@@ -357,7 +359,7 @@ The following endpoints are available for use.
 }
 ```
 
-## TESTING
+## Testing
 
 The server uses the Jest testing framework to run tests.
 
