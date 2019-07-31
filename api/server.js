@@ -3,10 +3,12 @@ const cors = require('cors');
 const helmet = require('helmet');
 const compression = require('compression');
 const logger = require('morgan');
+const swaggerUi = require('swagger-ui-express');
 
 const server = express();
 const authRouter = require('../auth');
 const entryRouter = require('../entries');
+const swaggerDocument = require('../apiDocumentation');
 
 server.use(express.json());
 server.use(express.urlencoded({ extended: false }));
@@ -22,6 +24,7 @@ server.get('/', (req, res) =>
   }),
 );
 
+server.use('/api/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 server.use('/api/auth', authRouter);
 server.use('/api/entries', entryRouter);
 

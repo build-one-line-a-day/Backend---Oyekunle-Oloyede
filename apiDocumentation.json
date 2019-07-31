@@ -1,0 +1,528 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0",
+    "title": "One Line a Day",
+    "description": "The One Line a Day project backend.\n\nOne Line a Day platform provides an insightful snapshot of your thoughts, memories, change, and progress on each of the 365 days of the year. Gives users a single location to record and retrieve their thoughts.\n\nUsers can log in and start making entries in their 10 year journal. They can create, review, update, and delete data. The app functions as a journal and you can see all entries each day across 10 years at the same time.",
+    "contact": {}
+  },
+  "host": "one-line-daily.herokuapp.com",
+  "basePath": "/api",
+  "schemes": [
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/auth/users": {
+      "get": {
+        "description": "Gets all the users",
+        "summary": "https://one-line-daily.herokuapp.com/api/auth/users",
+        "tags": [
+          "Get Users"
+        ],
+        "operationId": "AuthUsersGet",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        }
+      }
+    },
+    "/auth/users/1": {
+      "get": {
+        "description": "Gets a user by id",
+        "summary": "https://one-line-daily.herokuapp.com/api/auth/users/1",
+        "tags": [
+          "Get Users"
+        ],
+        "operationId": "AuthUsers1Get",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        }
+      }
+    },
+    "/auth/login": {
+      "post": {
+        "description": "Logs a user in.",
+        "summary": "https://one-line-daily.herokuapp.com/api/auth/login",
+        "tags": [
+          "Login"
+        ],
+        "operationId": "AuthLoginPost",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "Body",
+            "in": "body",
+            "required": true,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/https%3A~1~1one-line-daily.herokuapp.com~1api~1auth~1login-request"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        }
+      }
+    },
+    "/auth/register": {
+      "post": {
+        "description": "Registers a new user.",
+        "summary": "https://one-line-daily.herokuapp.com/api/auth/register",
+        "tags": [
+          "Register User"
+        ],
+        "operationId": "AuthRegisterPost",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "Body",
+            "in": "body",
+            "required": true,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/https%3A~1~1one-line-daily.herokuapp.com~1api~1auth~1register-request"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        }
+      }
+    },
+    "/entries": {
+      "get": {
+        "description": "Gets all the entry in the database. This endpoint is protected.",
+        "summary": "https://one-line-daily.herokuapp.com/api/entries",
+        "tags": [
+          "Get Entries"
+        ],
+        "operationId": "EntriesGet",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "security": []
+      },
+      "post": {
+        "description": "Creates a new entry.",
+        "summary": "https://one-line-daily.herokuapp.com/api/entries",
+        "tags": [
+          "Create Entry"
+        ],
+        "operationId": "EntriesPost",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "title",
+            "in": "formData",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "text",
+            "in": "formData",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "user_id",
+            "in": "formData",
+            "required": true,
+            "type": "integer",
+            "format": "int32",
+            "description": ""
+          },
+          {
+            "name": "image",
+            "in": "formData",
+            "required": true,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    },
+    "/entries/3": {
+      "get": {
+        "description": "Get's an entry by id. Protected endpoint.",
+        "summary": "https://one-line-daily.herokuapp.com/api/entries1",
+        "tags": [
+          "Get Entries"
+        ],
+        "operationId": "Entries3Get",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    },
+    "/entries/user/1": {
+      "get": {
+        "description": "Returns all entries created by a user.",
+        "summary": "https://one-line-daily.herokuapp.com/api/entries/user/1",
+        "tags": [
+          "Get Entries"
+        ],
+        "operationId": "EntriesUser1Get",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    },
+    "/entries/7": {
+      "put": {
+        "description": "Updates an entry.",
+        "summary": "https://one-line-daily.herokuapp.com/api/entries/7",
+        "tags": [
+          "Update Entry"
+        ],
+        "operationId": "Entries7Put",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "Body",
+            "in": "body",
+            "required": true,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/https%3A~1~1one-line-daily.herokuapp.com~1api~1entries~17-request"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "security": []
+      },
+      "delete": {
+        "description": "Deletes an entry.",
+        "summary": "https://one-line-daily.herokuapp.com/api/entries/7",
+        "tags": [
+          "Remove Entry"
+        ],
+        "operationId": "Entries7Delete",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "security": []
+      }
+    }
+  },
+  "definitions": {
+    "https://one-line-daily.herokuapp.com/api/auth/login-request": {
+      "title": "https://one-line-daily.herokuapp.com/api/auth/login-request",
+      "example": {
+        "email": "an@damme.com",
+        "password": "12345"
+      },
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "email",
+        "password"
+      ]
+    },
+    "https://one-line-daily.herokuapp.com/api/auth/register-request": {
+      "title": "https://one-line-daily.herokuapp.com/api/auth/register-request",
+      "example": {
+        "firstname": "Thunder",
+        "lastname": "Lightning",
+        "username": "tlght",
+        "email": "an@damme.com",
+        "password": "12345"
+      },
+      "type": "object",
+      "properties": {
+        "firstname": {
+          "type": "string"
+        },
+        "lastname": {
+          "type": "string"
+        },
+        "username": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "firstname",
+        "lastname",
+        "username",
+        "email",
+        "password"
+      ]
+    },
+    "https://one-line-daily.herokuapp.com/api/entries/7-request": {
+      "title": "https://one-line-daily.herokuapp.com/api/entries/7-request",
+      "example": {
+        "title": "seventh entry",
+        "text": "go, and may the codes be with you.",
+        "user_id": 2
+      },
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "text": {
+          "type": "string"
+        },
+        "user_id": {
+          "type": "integer",
+          "format": "int32"
+        }
+      },
+      "required": [
+        "title",
+        "text",
+        "user_id"
+      ]
+    }
+  },
+  "tags": [
+    {
+      "name": "Get Users",
+      "description": "Get all users in the database or a single user by ID."
+    },
+    {
+      "name": "Login",
+      "description": "Authenticates a user."
+    },
+    {
+      "name": "Register User",
+      "description": "Creates a new user."
+    },
+    {
+      "name": "Get Entries",
+      "description": "Gets an entry.\nCan return all the entry in the database, a single entry based on id or all the entry created by a user."
+    },
+    {
+      "name": "Create Entry",
+      "description": "Creates a new entry. Request body can be form data with a file or plain JSON data type."
+    },
+    {
+      "name": "Update Entry",
+      "description": "Updates an entry."
+    },
+    {
+      "name": "Remove Entry",
+      "description": "Deletes an entry if it exists in the database."
+    }
+  ]
+}
