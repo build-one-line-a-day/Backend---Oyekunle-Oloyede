@@ -2,6 +2,7 @@ const router = require('express').Router();
 const handler = require('./entryHandlers');
 const middleware = require('./entryMIddleware');
 const validateUserId = require('../auth/authMiddleware').validateId;
+const imageParser = require('./imageUploadMiddleware');
 
 router.get('/', middleware.protectPage, handler.getEntries);
 router.get(
@@ -19,6 +20,7 @@ router.get(
 router.post(
   '/',
   middleware.protectPage,
+  imageParser.single('image'),
   middleware.validateEntry,
   handler.createEntry,
 );
