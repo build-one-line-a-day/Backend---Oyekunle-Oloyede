@@ -13,7 +13,9 @@ Users can log in and start making entries in their 10 year journal. They can cre
 
 ## API Documentation
 
-The One Line a Day is hosted on Heroku and can be [here](https://one-line-daily.herokuapp.com/)
+The One Line a Day is hosted on Heroku and can be [here](https://one-line-daily.herokuapp.com/).
+
+The [full documentation](https://one-line-daily.herokuapp.com/api/docs/) is also available on heroku.
 
 ### API Endpoints
 
