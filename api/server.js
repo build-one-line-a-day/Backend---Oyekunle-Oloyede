@@ -9,6 +9,7 @@ const authRouter = require('../auth');
 const entryRouter = require('../entries');
 
 server.use(express.json());
+server.use(express.urlencoded({ extended: false }));
 server.use(cors());
 server.use(helmet());
 server.use(compression());
