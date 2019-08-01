@@ -35,7 +35,7 @@ describe('/api/auth/users [GET]', () => {
     request(server)
       .get(`/api/auth/users/${id}`)
       .expect('Content-Type', /json/)
-      // .expect(200)
+      .expect(200)
       .then(res => {
         expect(res.body.data).toEqual({
           id,
