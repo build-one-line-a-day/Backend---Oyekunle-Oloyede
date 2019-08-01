@@ -9,7 +9,6 @@ const server = express();
 const authRouter = require('../auth');
 const entryRouter = require('../entries');
 const swaggerDocument = require('../apiDocumentation');
-const webPushRouter = require('../webPush');
 
 server.use(express.json());
 server.use(express.urlencoded({ extended: false }));
@@ -28,7 +27,6 @@ server.get('/', (req, res) =>
 server.use('/api/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 server.use('/api/auth', authRouter);
 server.use('/api/entries', entryRouter);
-server.use('/subscribe', webPushRouter);
 
 server.use((req, res) =>
   res.status(404).json({
