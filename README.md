@@ -1,7 +1,10 @@
 ![npm](https://img.shields.io/npm/v/npm.svg)
-![License MIT](https://img.shields.io/github/license/mashape/apistatus.svg)
+![License MIT](https://img.shields.io/badge/license-MIT-informational)
 ![Top Language](https://img.shields.io/github/languages/top/badges/shields.svg)
-![Build](https://img.shields.io/badge/build-passing-green)
+![Build](https://img.shields.io/badge/build-passing-success)
+![Coverage](https://img.shields.io/badge/coverage-91%25-green)
+![Status](https://img.shields.io/badge/status-up-brightgreen)
+![!Dependencies](https://img.shields.io/badge/dependencies-up%20to%20date-brightgreen)
 
 # Backend---Oyekunle-Oloyede
 
