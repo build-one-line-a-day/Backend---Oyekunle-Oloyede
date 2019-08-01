@@ -35,7 +35,7 @@ Starts the test in watch mode. Great for development 😄.
 
 ### `npm run prod`
 
-Uses the *npm-run-all* library to the rollback, migrate and seed scripts. Sweet little combo ✌️.
+Uses the *npm-run-all* library to run the rollback, migrate and seed scripts. Sweet little combo ✌️.
 
 ## API Documentation
 
@@ -83,7 +83,7 @@ The following endpoints are available for use.
 |     user_id     | unsigned integer |     required, foreign key, references users(id)     |
 | image(optional) |       file       |                  defaults to null                   |
 
-`__NOTE__: To send an image along with an entry, the request type must be __multipart/form-data__.`
+**NOTE**: To send an image along with an entry, the request type must be _multipart/form-data_.
 
 ### Authentication Endpoints
 
