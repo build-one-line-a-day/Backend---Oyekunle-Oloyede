@@ -41,7 +41,6 @@ beforeAll(async () => {
     ['id'],
   );
 
-  console.log('***************************', entry);
   entryId = entry[0].id;
 });
 

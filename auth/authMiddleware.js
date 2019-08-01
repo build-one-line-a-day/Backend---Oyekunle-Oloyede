@@ -33,7 +33,8 @@ const validateLogin = (req, res, next) => {
   if (!email || !password || typeof password !== 'string')
     return res.status(400).json({
       status: 400,
-      message: 'Login credential must include username and password of type string.',
+      message:
+        'Login credential must include username and password of type string.',
     });
 
   next();
