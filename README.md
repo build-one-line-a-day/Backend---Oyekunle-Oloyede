@@ -412,7 +412,7 @@ Run the test in watch mode with `npm run watch`.
 
 ## Push Notifications
 
-This server is built to support push notifications.
+This server is built to support push notifications 📱 💻.
 
 Make `POST` request to `/subscribe` when subscribing a client for push messages.
 
