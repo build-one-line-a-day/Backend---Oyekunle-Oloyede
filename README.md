@@ -57,6 +57,8 @@ The following endpoints are available for use.
 |     user_id     | unsigned integer |     required, foreign key, references users(id)     |
 | image(optional) |       file       |                  defaults to null                   |
 
+`__NOTE__: To send an image along with an entry, the request type must be __multipart/form-data__.`
+
 ### Authentication Endpoints
 
 #### Registration [POST]
