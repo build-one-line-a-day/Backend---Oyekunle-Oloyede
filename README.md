@@ -63,6 +63,7 @@ The following endpoints are available for use.
 | POST    | /api/entries          | creates an entry                         |
 | PUT     | /api/entries/:id      | updates an entry                         |
 | DELETE  | /api/entries/:id      | deletes an entry                         |
+| POST    | /subscribe            | subscribes a user to get push message    |
 
 #### User Schema
 
@@ -408,6 +409,12 @@ Check tests with the `npm test` command.
 Coverage is also integrated and the can be viewed with the `npm test` command.
 
 Run the test in watch mode with `npm run watch`.
+
+## Push Notifications
+
+This server is built to support push notifications 📱 💻.
+
+Make `POST` request to `/subscribe` when subscribing a client for push messages.
 
 ## Author
 
