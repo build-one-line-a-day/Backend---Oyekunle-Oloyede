@@ -38,7 +38,7 @@ Starts the test in watch mode. Great for development 😄.
 
 ### `npm run prod`
 
-Uses the *npm-run-all* library to run the rollback, migrate and seed scripts. Sweet little combo ✌️.
+Uses the _npm-run-all_ library to run the rollback, migrate and seed scripts. Sweet little combo ✌️.
 
 ## API Documentation
 
@@ -411,4 +411,4 @@ Run the test in watch mode with `npm run watch`.
 
 ## Author
 
-**Oyekunle Oloyede**
+💻 ☕️ **Oyekunle Oloyede** 😎 🤙
