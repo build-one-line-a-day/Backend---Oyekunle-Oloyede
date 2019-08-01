@@ -21,18 +21,19 @@ The [full documentation](https://one-line-daily.herokuapp.com/api/docs/) is also
 
 The following endpoints are available for use.
 
-| Methods | Endpoint              | Description                          |
-| ------- | --------------------- | ------------------------------------ |
-| GET     | /api/auth/users       | gets all users                       |
-| GET     | /api/auth/users/:id   | gets a user by id                    |
-| POST    | /api/auth/register    | registers a new user                 |
-| POST    | /api/auth/login       | logs a user in                       |
-| GET     | /api/entries          | gets all entries                     |
-| GET     | /api/entries/:id      | gets an entry by id                  |
-| GET     | /api/entries/user/:id | returns the ticket created by a user |
-| POST    | /api/entries          | creates an entry                     |
-| PUT     | /api/entries/:id      | updates an entry                     |
-| DELETE  | /api/entries/:id      | deletes an entry                     |
+| Methods | Endpoint              | Description                              |
+| ------- | --------------------- | ---------------------------------------- |
+| GET     | /                     | Returns the server status with a message |
+| GET     | /api/auth/users       | gets all users                           |
+| GET     | /api/auth/users/:id   | gets a user by id                        |
+| POST    | /api/auth/register    | registers a new user                     |
+| POST    | /api/auth/login       | logs a user in                           |
+| GET     | /api/entries          | gets all entries                         |
+| GET     | /api/entries/:id      | gets an entry by id                      |
+| GET     | /api/entries/user/:id | returns the ticket created by a user     |
+| POST    | /api/entries          | creates an entry                         |
+| PUT     | /api/entries/:id      | updates an entry                         |
+| DELETE  | /api/entries/:id      | deletes an entry                         |
 
 #### User Schema
 
